@@ -1,4 +1,4 @@
-# kubernetes自动部署工具(内网版本)
+# kubernetes自动部署工具(外网版本)
 
 ## 如何使用
 * 找个虚拟机,能够远程ssh你的k8s节点地址的作为部署机器,远程进行部署
@@ -11,7 +11,7 @@
 ```
 git clone http://git.tophc.top/kubernetes/kunernetes-setup-tools.git 
 cd kunernetes-setup-tools
-git checkout intranet        #切换到内网版本分支
+git checkout global          #切换到外网版本分支
 vim conf/environment.conf    #修改自己的环境信息
 ```
 
@@ -21,9 +21,9 @@ vim conf/environment.conf    #修改自己的环境信息
 从FTP服务器获取安装脚本, CICD平台会自动上传部署脚本到FTP服务器
 
 ```
-wget ftp://172.19.2.252/Kubernetes/自动部署工具/kubernetes-setup-tools-intranet.tar.gz
-tar -zxf kubernetes-setup-tools-intranet.tar.gz
-cd kubernetes-setup-tools-intranet
+wget ftp://172.19.2.252/Kubernetes/自动部署工具/kubernetes-setup-tools-global.tar.gz
+tar -zxf kubernetes-setup-tools-global.tar.gz
+cd kubernetes-setup-tools-global
 vim conf/environment.conf    #修改自己的环境信息
 ```
 
@@ -43,7 +43,6 @@ vim conf/environment.conf    #修改自己的环境信息
 | 10.100.4.25 | node | kube-kubelet,kube-proxy |
 
 
-* **安装过程会从`172.19.2.252`的FTP上下载文件,请保持所有节点和`172.19.2.252`能够正常通信**
 * 三个master高可用,部署keepalive产生VIP用做kube-apiserver的地址, 三台master部署nginx做kube-apiserver的tcp负载均衡, 这样kube-apiserver的地址就是`https://10.100.4.20:8443`;
 * master节点部署etcd集群、kube-apiserver、kube-schedule、kube-controller-manager; kube-schedule和kube-controller-manager自带高可用功能;
 * master也参与到工作中,这样就有5台节点, 其中三台为master;
