@@ -5,7 +5,7 @@ source ./conf/environment.conf
 for node_ip in ${NODE_IPS[@]}
   do
     echo ">>> ${node_ip}"
-    ssh root@${node_ip} "wget -O /etc/yum.repos.d/docker-ce.repo https://download.docker.com/linux/centos/docker-ce.repo"
+    ssh root@${node_ip} "wget -O /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo"
     ssh root@${node_ip} "yum install -y yum-utils device-mapper-persistent-data lvm2; yum makecache; yum -y install docker-ce; chkconfig docker on"
     ssh root@${node_ip} "mkdir /etc/systemd/system/docker.service.d"
     ssh root@${node_ip} "mkdir -p /etc/docker/; "
