@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: kuboard
-        image: harbor.tophc.top/kubernetes/kuboard:latest
+        image: registry.cn-shanghai.aliyuncs.com/kubernetes_mirrors/kuboard:latest
         imagePullPolicy: Always
       tolerations:
       - key: node-role.kubernetes.io/master

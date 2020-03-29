@@ -221,7 +221,7 @@ spec:
         effect: "NoSchedule"
       containers:
         - name: nginx-ingress-controller
-          image: harbor.tophc.top/kubernetes/kubernetes-ingress-controller/nginx-ingress-controller:0.26.1
+          image: registry.cn-shanghai.aliyuncs.com/google_mirrors/nginx-ingress-controller:0.26.1
           args:
             - /nginx-ingress-controller
             - --configmap=$(POD_NAMESPACE)/nginx-configuration
